@@ -130,9 +130,19 @@ Linearization yields the following equation:
 
 ![](images/eq2.gif)
 
-where  (*ˆx<sub>u</sub>*, *ˆy<sub>u</sub>*)  is an approximate position estimate, and *ˆρ<sub>i</sub>* is an approximated pseudorange, and (*Δ<sub>u</sub>*, *Δ<sub>u</sub>*) is the displacement from the approximate position to the true position, and 
+where  (*ˆx<sub>u</sub>*, *ˆy<sub>u</sub>*)  is an approximate position estimate, and *ˆρ<sub>i</sub>* is an approximated pseudorange, and (*Δx<sub>u</sub>*, *Δy<sub>u</sub>*) is the displacement from the approximate position to the true position, and 
 
 ![](images/eq3.GIF)
+
+Linearized set of equations can be shown in matrix form as follows
+
+![](images/eq4.GIF)
+
+where
+
+![](images/eq5.GIF)
+
+where matrix H is the direction cosine matrix containing unit vectors pointing from the linearization point to the location of the ith base station, **Δx** is the offset of the user from the linearization point, and **Δρ** contains differences between the predicted and observed ranges.
 
 
 
