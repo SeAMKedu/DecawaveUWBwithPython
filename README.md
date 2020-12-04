@@ -132,7 +132,7 @@ Linearization yields the following equation:
 
 where  (*ˆx<sub>u</sub>*, *ˆy<sub>u</sub>*)  is an approximate position estimate, and *ˆρ<sub>i</sub>* is an approximated pseudorange, and (*Δ<sub>u</sub>*, *Δ<sub>u</sub>*) is the displacement from the approximate position to the true position, and 
 
-![](images/eq3b.GIF)
+![](images/eq3.GIF)
 
 
 
