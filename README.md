@@ -16,9 +16,7 @@ MDEK1001 development kit contains 12 encased development boards (DWM1001-DEV) an
 
 The figure below shows an DWM1001-DEV module.
 
-
 ![](images/mdek1001.png)
-
 
 The system contains also Android application, which can be used for module configuration and positioning. Alternatively, the module configuration can be done by using the UART shell mode.
 
