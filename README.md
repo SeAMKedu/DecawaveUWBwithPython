@@ -16,7 +16,7 @@ MDEK1001 development kit contains 12 encased development boards (DWM1001-DEV) an
 
 The figure below shows an DWM1001-DEV module.
 
-![](images/mdek1001.png)
+![](images/mdek1001.PNG)
 
 The system contains also Android application, which can be used for module configuration and positioning. Alternatively, the module configuration can be done by using the UART shell mode.
 
@@ -24,7 +24,7 @@ The system contains also Android application, which can be used for module confi
 
 Document [MDEK1001 Quick Start Guide](https://www.decawave.com/mdek1001/quickstart/) contains the instructions to set up the system quickly by using Android application. Four DWM1001-DEV modules are used as anchors and one module is used as a tag, which position will be estimated. 
 
-![](images/Anchors.jpg)
+![](images/Anchors.JPG)
 
 After configuring the anchors and tags, the coordinates of anchors can be determined automatically by using Android application's Auto-Positioning function. However, it is recommended to measure the anchor coordinates manually with one cm accuracy or better.
 
