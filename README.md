@@ -144,6 +144,8 @@ where
 
 Equation above has the following solution (pseudoinverse is used when there are more measurements that unknowns). 
 
+![](images/eq6.GIF)
+
 Matrix **H** is the direction cosine matrix containing unit vectors pointing from the linearization point to the location of the ith base station, **Δx** is the offset of the user from the linearization point, and **Δρ** contains differences between the predicted and observed ranges.
 
 
