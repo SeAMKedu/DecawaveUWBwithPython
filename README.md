@@ -150,9 +150,7 @@ Matrix **H** is the direction cosine matrix containing unit vectors pointing fro
 
 ## Exercise 1
 
-Make a Python program, which estimates the position of the tag from the data collected from Decawave UWB system. You can obtain the range measurements from this data. The anchor coordinates can be obtained from the following figure:
-
-![](images/testsetup.PNG) 
+Make a Python program, which estimates the position of the tag from the data collected from Decawave UWB system. The anchor coordinates and the range measurements are obtained from this file.
 
 
 
