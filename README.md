@@ -130,7 +130,7 @@ Linearization yields the following equation:
 
 ![](images/eq2.gif)
 
-where  (*ˆx<sub>u</sub>*, *ˆy<sub>u</sub>*)  is an approximate position estimate, and 
+where  (*ˆx<sub>u</sub>*, *ˆy<sub>u</sub>*)  is an approximate position estimate, and ρ is
 
 <div>rr</div>
 <div>ρ</div>
