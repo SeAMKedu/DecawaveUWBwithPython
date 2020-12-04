@@ -2,7 +2,9 @@
 
 This tutorial shows how the position of a tag can be estimated from the raw distance measurements made by Decawave MDEK1001 development kit.
 
-If you have a Decawave MDEK1001 development kit, you can set up the system and collect data from Decawave modules by yourself. Otherwise, you can start from sample data, and test the algorithm to be developed with that data.
+Decawave MDEK1001 is a development kit for indoor positioning application utilizing ultra-wideband (UWB) radio technology. UWB enables the accurate measure of the time of flight of the radio signal, leading to centimeter accuracy in the range measurement and positioning. 
+
+If you have a Decawave MDEK1001 development kit, you can set up the system and collect data from Decawave modules by yourself. Otherwise, you can start from sample data of this page, and test the algorithm to be developed with that data.
 
 The first chapters contain instructions how to setup the DWM1001 system and how to collect the raw distance data from the system. You can skip these chapters, if you want to use existing sample data instead, and start from the chapter [Sample test data](#sample-test-data).
 
@@ -12,7 +14,9 @@ Instructions for position estimation algorithms are given in chapter [Position e
 
 MDEK1001 development kit contains 12 encased development boards (DWM1001-DEV) and necessary software for system setup, networking and positioning. Each DWM1001-DEV module can be configured as an anchor or a tag. DWM1001-DEV modules use Bluetooth for communication and UWB for ranging. More information about MDEK1001 Development Kit can be found [here](https://www.decawave.com/product/mdek1001-deployment-kit/)
 
-![](images/mdek1001.png)
+The figure below shows an DWM1001-DEV module.
+
+![](images/mdek1001.PNG)
 
 The system contains also Android application, which can be used for module configuration and positioning. Alternatively, the module configuration can be done by using the UART shell mode.
 
@@ -20,27 +24,27 @@ The system contains also Android application, which can be used for module confi
 
 Document [MDEK1001 Quick Start Guide](https://www.decawave.com/mdek1001/quickstart/) contains the instructions to set up the system quickly by using Android application. Four DWM1001-DEV modules are used as anchors and one module is used as a tag, which position will be estimated. 
 
-![](images/Anchors.jpg)
+![](images/Anchors.JPG)
 
-After configuring the anchors and tags, the coordinated of anchors can be determined automatically by using Android application's Auto-Positioning function. However, it is recommended to measure the anchor coordinates manually with one cm accuracy or better.
+After configuring the anchors and tags, the coordinates of anchors can be determined automatically by using Android application's Auto-Positioning function. However, it is recommended to measure the anchor coordinates manually with one cm accuracy or better.
 
 After the configuration phase, the Android application is ready for estimating the position of the tag. 
 
 ## System setup using the UART shell mode
 
-MDEV1001 module firmware contains an APIs to to create a network and configure the nodes directly over UART. Instruction for that are found from DWM1001 Gateway Quick Deployment Guide, which can be found [here](https://www.decawave.com/product/mdek1001-deployment-kit/). (Download "DWM1001, DW10001-DEV and MDEK1001 Documents, Source Code, Android Application & Firmware Image" zip package at the end of page.)
+MDEV1001 module firmware contains an APIs to to create a network and configure the nodes directly over UART. Instructions for that are found from DWM1001 Gateway Quick Deployment Guide, which can be found [here](https://www.decawave.com/product/mdek1001-deployment-kit/). (Download "DWM1001, DW10001-DEV and MDEK1001 Documents, Source Code, Android Application & Firmware Image" zip package at the end of page.)
 
-Connect the DWM1001-DEV to the PC over USB and launch a telnet client (for example TeraTerm or PuTTY). Baud rate is 115200. In the telnet client shell press `Enter` twice in order to start DWM1001 UART shell mode.
+Connect the DWM1001-DEV to the PC over USB and launch a telnet client (for example TeraTerm or PuTTY). Set the baud rate as 115200. In the telnet client shell press `Enter` twice in order to start DWM1001 UART shell mode.
 
 Each DWM1001-DEV module is configured either as Initiator, Anchor or Tag. 
 
-- Anchor is used as reference to calculate tag position with trilateration. Position coordinates of anchors are known.
-- Tag is a mobile node whose position will be estimated by the system.
+- Anchor is used as reference to calculate tag position with trilateration. Position coordinates of the anchors are known.
 - Initiator is an anchor, which will initialize the network. A network must contain at least one initiator.
+- Tag is a mobile node whose position will be estimated.
 
 All of the initiators, anchors and tags must have a common network ID (PAN ID).
 
-Configure one module as **Initiator** by following commands:
+Configure one module as an **Initiator** by following commands:
 
 - `nis 0x1234`: set up the node PAN ID to 0x1234
 - `aps 0 0 0`: set up the node coordinates to x = 0, y = 0, z = 0. Coordinates are given as millimeters.
@@ -54,7 +58,7 @@ Configure three modules as **Anchors** by following commands:
 - `aps 1000 2000 0`: set up the node coordinates to x = 1 m, y = 2 m, z = 0. Coordinates are given as millimeters.
 - `nma`: configure the node as anchor and reset the device.
 
-Configure one module as **Tag** by following commands:
+Configure one module as a **Tag** by following commands:
 
 - `nis 0x1234`: set up the node PAN ID to 0x1234
 - `nmt`: configure the node as tag and reset the device.
@@ -106,13 +110,13 @@ The figure below shows the anchor and tag positions during the data collection. 
 
 ## Position estimation
 
-Because the anchor or tag clocks are not synchronized to a common time reference, a double sided two-way ranging method is employed to measure the signal propagation delay. The distance or range is obtained by multiplying the signal propagation delay by speed of light.
+Because the anchor or tag clocks are not synchronized to a common time reference, a double sided two-way ranging method is employed to measure the signal propagation delay. The distance or range is obtained by multiplying the two-way signal propagation delay by the speed of light, and then by dividing by 2.
 
 The position is estimated by intersecting circles (2D) or spheres (3D) with radius *r<sub>i</sub>* and centre (*x<sub>i</sub>*, *y<sub>i</sub>*), as illustrated below.
 
 xx
 
-Radius of the circle *r<sub>i</sub>* is obtained from the measured range. Point (*x<sub>i</sub>*, *y<sub>i</sub>*) is the known location of the base station transmitting or receiving the signal. When the distance measurements *r<sub>i </sub>*are available from at least two anchors, the
+Radius of the circle *r<sub>i</sub>* is obtained from the measured range. Point (*x<sub>i</sub>*, *y<sub>i</sub>*) is the known location of the base station transmitting or receiving the signal. When the distance measurements *r<sub>i</sub>* are available from at least two anchors, the
 two-dimensional location of the receiver (*x<sub>u</sub>*, *y<sub>u</sub>*) can be solved from the following
 set of non-linear equations 
 
