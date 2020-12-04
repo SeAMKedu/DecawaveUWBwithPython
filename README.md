@@ -130,7 +130,10 @@ Linearization yields the following equation:
 
 ![](images/eq2.gif)
 
-where  (*ˆx<sub>u</sub>*, *ˆy<sub>u</sub>*)  is an approximate position estimate, and u tˆ is a time bias estimate
+where  (*ˆx<sub>u</sub>*, *ˆy<sub>u</sub>*)  is an approximate position estimate, and 
+
+<div>rr</div>
+<div>ρ</div>
 
 and i ˆ is an approximate pseudorange, and ( , , , ) u u u u x y z t is the displacement
 from the approximate position to the true position, and 
