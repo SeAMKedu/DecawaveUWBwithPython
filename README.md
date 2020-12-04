@@ -148,5 +148,11 @@ Equation above has the following solution (pseudoinverse is used when there are 
 
 Matrix **H** is the direction cosine matrix containing unit vectors pointing from the linearization point to the location of the ith base station, **Δx** is the offset of the user from the linearization point, and **Δρ** contains differences between the predicted and observed ranges.
 
+## Exercise 1
+
+Make a Python program, which estimates the position of the tag from the data collected from Decawave UWB system. You can obtain the range measurements from this data. The anchor coordinates can be obtained from the following figure:
+
+![](images/testsetup.PNG) 
+
 
 
