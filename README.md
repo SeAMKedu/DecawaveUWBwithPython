@@ -14,7 +14,9 @@ Instructions for position estimation algorithms are given in chapter [Position e
 
 MDEK1001 development kit contains 12 encased development boards (DWM1001-DEV) and necessary software for system setup, networking and positioning. Each DWM1001-DEV module can be configured as an anchor or a tag. DWM1001-DEV modules use Bluetooth for communication and UWB for ranging. More information about MDEK1001 Development Kit can be found [here](https://www.decawave.com/product/mdek1001-deployment-kit/)
 
+
 ![](images/mdek1001.png)
+
 
 The system contains also Android application, which can be used for module configuration and positioning. Alternatively, the module configuration can be done by using the UART shell mode.
 
