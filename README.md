@@ -114,7 +114,7 @@ Because the anchor or tag clocks are not synchronized to a common time reference
 
 The position is estimated by intersecting circles (2D) or spheres (3D) with radius *r<sub>i</sub>* and centre (*x<sub>i</sub>*, *y<sub>i</sub>*), as illustrated below.
 
-![](images/Circles.PNG)
+![](images/Circles2.PNG)
 
 Radius of the circle *r<sub>i</sub>* is obtained from the measured range. Point (*x<sub>i</sub>*, *y<sub>i</sub>*) is the known location of the base station transmitting or receiving the signal. When the distance measurements *r<sub>i</sub>* are available from at least two anchors, the
 two-dimensional location of the receiver (*x<sub>u</sub>*, *y<sub>u</sub>*) can be solved from the following
@@ -130,7 +130,10 @@ Linearization yields the following equation:
 
 ![](images/eq2.gif)
 
-where  (*ˆx<sub>u</sub>*, *ˆy<sub>u</sub>*)  is an approximate position estimate, and u tˆ is a time bias estimate
+where  (*ˆx<sub>u</sub>*, *ˆy<sub>u</sub>*)  is an approximate position estimate, and *ˆρ<sub>i</sub>* is an approximated pseudorange, and Δ is the displacement from the approximate position to the true position, and 
+
+<div>rr</div>
+<div>ρ</div>
 
 and i ˆ is an approximate pseudorange, and ( , , , ) u u u u x y z t is the displacement
 from the approximate position to the true position, and 
