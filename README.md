@@ -140,7 +140,7 @@ Linearized set of equations can be shown in matrix form as follows
 
 where
 
-![](images/eq4.GIF)
+![](images/eq5.GIF)
 
 
 
