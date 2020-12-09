@@ -225,17 +225,95 @@ Go through the list of strings and parse the anchor coordinates and the range me
 ```
 If there are at least two measurements, the position can be estimated. Define first the vector ***x*** for the estimated position and initialize it with some coordinate values inside the positioning area.
 ```python
+    # end for p in pieces:
 
+    if len(measurements) >= 2:
+        # estimated position 2x1
+        x = np.array([[3],[3]])
 ```
 
-Make next the vector ***ρ*** for the measured ranges and vector ***^ρ*** for the estimated ranges.
+Make next the vector **ρ** for the measured ranges and vector **^ρ** for the estimated ranges.
 ```python
-
+        # range measurements Nx1
+        ranges = np.zeros((len(measurements), 1))
+        i = 0
+        for m in measurements:
+            ranges[i][0] = m["range"]   
+            i += 1     
+            
+        # estimated ranges Nx1
+        estimated_ranges = np.zeros((len(measurements), 1))
 ```
 
-Initiali
+Initialize then the direction cosine matrix **H** with zeroes
 ```python
-
+        # direction cosines Nx2
+        H = np.zeros((len(measurements), 2))
 ```
 
+After the vector and matrix initializations, estimate the location of the tag **ρ** iteratively.
+In each round calculate the delta position towards the true position and add it to the estimated
+position calculated at the previous iteration cycle. Stop the iteration, when the length of the
+delta position becomes very small.
 
+```python
+        ii = 0
+        while ii < 20:
+
+            i = 0
+            for m in measurements:
+                # calculate the predicted ranges
+                estimated_ranges[i][0] = \
+                    math.sqrt((m["x"] - x[0][0])**2 + (m["y"] - x[1][0])**2) 
+                # calculate the direction cosines
+                H[i][0] = (m["x"] - x[0][0]) / estimated_ranges[i][0]
+                H[i][1] = (m["y"] - x[1][0]) / estimated_ranges[i][0]
+                i += 1
+
+            # observed minus predicted ranges
+            delta_roo = ranges - estimated_ranges
+            # pseudoinverse
+            delta_x = np.linalg.inv(np.transpose(H) @ H) @ np.transpose(H)\
+                @ delta_roo
+            # subtract the delta position from the position calculated
+            # in previous round
+            x = x - delta_x
+            # stop iteration when the delta position becomes small enough
+            if np.linalg.norm(delta_x) < 0.001:
+                break
+            ii+=1
+        # end while ii < 20:
+```
+
+Add the calculated position coordinates x and y to the list:
+
+```python
+        # end while ii < 20:
+        # print(x[0][0], x[1][0])
+
+        x_calculated.append(x[0][0])
+        y_calculated.append(x[1][0])
+    # end if len(measurements) >= 2:
+# end for row in file:
+```
+
+Finally close the file and plot the calculated position coordinates.
+
+```python
+# end for row in file:
+file.close()
+plt.plot(x_calculated, y_calculated,'b.')
+plt.show()
+```
+
+The complete program can be found [here](example/decawavedatafloor.txt).
+
+# Exercise 2
+
+Modify the program so that you can compare the recalculated position to the position calculated 
+by the Decawave module originally. The original position vector can be found from the field *est*
+at the end of the row.
+
+# Exercise 3
+
+Make the calculation in three dimensions. 
