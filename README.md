@@ -114,13 +114,13 @@ Because the anchor or tag clocks are not synchronized to a common time reference
 
 The position is estimated by intersecting circles (2D) or spheres (3D) with radius *r<sub>i</sub>* and centre (*x<sub>i</sub>*, *y<sub>i</sub>*), as illustrated below.
 
-![](images/Circles2.PNG)
+![](images/Circles2.PNG)    (1)
 
 Radius of the circle *r<sub>i</sub>* is obtained from the measured range. Point (*x<sub>i</sub>*, *y<sub>i</sub>*) is the known location of the base station transmitting or receiving the signal. When the distance measurements *r<sub>i</sub>* are available from at least two anchors, the
 two-dimensional location of the receiver (*x<sub>u</sub>*, *y<sub>u</sub>*) can be solved from the following
 set of non-linear equations 
 
-![](images/eq1.gif)
+![](images/eq1.gif)    (2)
 
 where *i* ranges from 1 to N and references the base stations at known locations, (*x<sub>i</sub>*, *y<sub>i</sub>*) denote the *i*th base station coordinates in two dimensions, and *r<sub>i</sub>* is the range measurement from *i*th base station.
 
@@ -128,19 +128,27 @@ The nonlinear equation above can be solved for the unknowns by using either clos
 
 Linearization yields the following equation: 
 
-![](images/eq2.gif)
+![](images/eq2.gif)    (3)
 
 where  (*ˆx<sub>u</sub>*, *ˆy<sub>u</sub>*)  is an approximate position estimate, and *ˆρ<sub>i</sub>* is an approximated pseudorange, and (*Δx<sub>u</sub>*, *Δy<sub>u</sub>*) is the displacement from the approximate position to the true position, and 
 
-![](images/eq3.GIF)
+![](images/eq3.GIF)    (4)
 
-Linearized set of equations can be shown in matrix form as follows
+Equation 3 is simplified by introducing new variables where
 
-![](images/eq4.GIF)
+![](images/eq3c.GIF).   (5)
+
+Equation 3 can be written now more simply as 
+
+![](images/eq3d.GIF).   (6)
+
+In Equation 6 there are two unknowns (*Δx<sub>u</sub>*, *Δy<sub>u</sub>*) which can be solved by making ranging measurements to at least two base stations. The unknown displacement can be determined from Equation 7 shown in matrix form
+
+![](images/eq4.GIF)    (7)
 
 where
 
-![](images/eq5.GIF)
+![](images/eq5.GIF)    (8)
 
 Equation above has the following solution (pseudoinverse is used when there are more measurements that unknowns). 
 
