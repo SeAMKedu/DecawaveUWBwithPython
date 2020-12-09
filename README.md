@@ -12,7 +12,7 @@ Instructions for position estimation algorithms are given in chapter [Position e
 
 ## DWM1001 Development Kit
 
-MDEK1001 development kit contains 12 encased development boards (DWM1001-DEV) and necessary software for system setup, networking and positioning. Each DWM1001-DEV module can be configured as an anchor or a tag. DWM1001-DEV modules use Bluetooth for communication and UWB for ranging. More information about MDEK1001 Development Kit can be found [here](https://www.decawave.com/product/mdek1001-deployment-kit/)
+MDEK1001 development kit contains 12 encased development boards (DWM1001-DEV) and necessary software for system setup, networking and positioning. Each DWM1001-DEV module can be configured as an anchor or a tag. DWM1001-DEV modules use Bluetooth for communication and UWB for ranging. More information about MDEK1001 Development Kit can be found [here](https://www.decawave.com/product/mdek1001-deployment-kit/).
 
 The figure below shows an DWM1001-DEV module.
 
@@ -156,9 +156,15 @@ Equation 7 has the following solution (pseudoinverse is used when there are more
 
 Matrix **H** is the direction cosine matrix containing unit vectors pointing from the linearization point to the location of the ith base station, **Δx** is the offset of the user from the linearization point, and **Δρ** contains differences between the predicted and observed ranges.
 
+User’s position is calculated by using an iterative process. At the system startup the approximated location is set to some initial value. The center of the locationing area is  a good choice.  Next the direction cosine matrix **H** and the predicted-minus-observed pseudorange **Δρ** vector are computed. After that, the unknown displacement vector **Δx** is calculated by using Equation 7. A new approximate position is obtained by adding the displacement vector to the estimated position vector calculated at the previous round. The iteration process is repeated until the length of the displacement vector does not become smaller any more. 
+
 ## Exercise 1
 
-Make a Python program, which estimates the position of the tag from the data collected from Decawave UWB system. The anchor coordinates and the range measurements are obtained from file [decawavedatafloor.txt](example/decawavedatafloor.txt). The contents of the data file are described [Sample test data](#sample-test-data)
+Make a Python program, which estimates the position of the tag from the data collected from Decawave UWB system. The anchor coordinates and the range measurements are obtained from file [decawavedatafloor.txt](example/decawavedatafloor.txt). The contents of the data file are described [Sample test data](#sample-test-data).
+
+Make 
+
+
 
 
 
