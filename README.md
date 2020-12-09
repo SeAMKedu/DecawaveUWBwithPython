@@ -82,7 +82,7 @@ Collect some data and save the data to a text file for further analysis.
 
 ## Sample test data
 
-File xx contains sample raw range and position data. One line contains the range measurements from the tag to each anchor, anchor coordinates and the estimated position.
+File [decawavedatafloor.txt](example/decawavedatafloor.txt) contains sample raw range and position data. One line contains the range measurements from the tag to each anchor, anchor coordinates and the estimated position.
 
 ```python
 CD37[0.00,0.00,0.00]=2.80 1495[0.00,3.99,0.00]=2.74 592F[5.00,0.00,0.00]=3.60 5B01[5.00,3.99,0.00]=3.70 le_us=3387 est[1.90,1.96,0.15,91]
