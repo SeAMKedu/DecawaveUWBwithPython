@@ -306,7 +306,7 @@ plt.plot(x_calculated, y_calculated,'b.')
 plt.show()
 ```
 
-The complete program can be found [here](example/decawavedatafloor.txt).
+The complete program can be found [here](example/calc.py).
 
 # Exercise 2
 
