@@ -162,9 +162,80 @@ User’s position is calculated by using an iterative process. At the system sta
 
 Make a Python program, which estimates the position of the tag from the data collected from Decawave UWB system. The anchor coordinates and the range measurements are obtained from file [decawavedatafloor.txt](example/decawavedatafloor.txt). The contents of the data file are described [Sample test data](#sample-test-data).
 
-Make 
+Make a Python file called calc.py. Import first the libraries needed for mathematics and plotting. Introduce lists for x and y coordinates of calculated position. Open the file for reading and go through the lines in the file. Print the lines to the console.
 
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+import math
 
+# lists for recalculated positions
+x_calculated = []
+y_calculated = []
 
+file = open("decawavedatafloor.txt", "r")
+
+for row in file:
+    row = row.rstrip()
+    print(row)
+```
+
+Each line contains the following information:
+
+```
+CD37[0.00,0.00,0.00]=2.80 1495[0.00,3.99,0.00]=2.74 592F[5.00,0.00,0.00]=3.60 5B01[5.00,3.99,0.00]=3.70 le_us=3387 est[1.90,1.96,0.15,91]
+```
+
+Split the line to a list of strings by using space as a deliminiter and introduce a list for measurements:
+
+```python
+for row in file:
+    row = row.rstrip()
+    # print(row)
+
+    # split the row to string array    
+    pieces = row.split()
+
+    # list of measurements
+    measurements = []
+```
+
+Go through the list of strings and parse the anchor coordinates and the range measurement from the string ```1495[0.00,3.99,0.00]=2.74```. We will omit the fields le_us and est.
+
+```python
+    # get the anchor coordinates, ranges and original position    
+     for p in pieces:
+        if (p[:5] == "le_us"):
+            continue
+        elif p[:3] == "est":
+            continue
+        else:       
+            # 1495[0.00,3.99,0.00]=2.74
+            measurement = {}
+            measurement["id"] = p[:p.find('[')]
+            xyz = p[p.find('[')+1 : p.find(']')]
+            xyza = xyz.split(',')
+            measurement["x"] = float(xyza[0])
+            measurement["y"] = float(xyza[1])
+            measurement["z"] = float(xyza[2])
+            measurement["range"] = float(p[p.find('=')+1 : ])
+            # append the measurement to the list of measurements of this epoch
+            measurements.append(measurement)
+    # end for p in pieces:            
+```
+If there are at least two measurements, the position can be estimated. Define first the vector ***x*** for the estimated position and initialize it with some coordinate values inside the positioning area.
+```python
+
+```
+
+Make next the vector ***ρ*** for the measured ranges and vector ***^ρ*** for the estimated ranges.
+```python
+
+```
+
+Initiali
+```python
+
+```
 
 
