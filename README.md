@@ -150,7 +150,7 @@ where
 
 ![](images/eq5.GIF)    (8)
 
-Equation above has the following solution (pseudoinverse is used when there are more measurements that unknowns). 
+Equation 7 has the following solution (pseudoinverse is used when there are more measurements that unknowns). 
 
 ![](images/eq6.GIF)
 
